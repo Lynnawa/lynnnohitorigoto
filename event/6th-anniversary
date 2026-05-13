@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6th-きみと、夜明けの先に — Lynn の 独り言</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+SC:wght@300;400&family=Zen+Old+Mincho:wght@400;700&display=swap');
+
+:root {
+  --paper: #f5f0e8;
+  --ink: #2c2416;
+  --ink-soft: #5a4e3a;
+  --ink-light: #9a8c78;
+  --ink-faint: #c8bfae;
+  --accent-soft: #c47a3a;
+  --rule: rgba(90, 78, 58, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--paper);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 27px,
+      var(--rule) 27px,
+      var(--rule) 28px
+    );
+  color: var(--ink);
+  font-family: 'Noto Serif SC', 'Noto Serif JP', serif;
+  font-weight: 300;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.nav {
+  padding: 1.5rem 0;
+  border-bottom: 0.5px solid var(--ink-faint);
+  margin-bottom: 3rem;
+}
+
+.nav a {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--ink-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav a:hover { color: var(--ink); }
+.nav a::before { content: '← '; font-size: 10px; }
+
+.article-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.5px solid var(--ink-faint);
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.article-no {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+}
+
+.article-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--accent-soft);
+}
+
+.article-date {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: var(--ink-faint);
+  margin-left: auto;
+}
+
+.article-title {
+  font-family: 'Zen Old Mincho', 'Noto Serif JP', serif;
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.article-title-sub {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink-light);
+  letter-spacing: 0.05em;
+}
+
+/* 正文 */
+.article-body {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--ink-soft);
+  margin-bottom: 3rem;
+}
+
+.article-body p {
+  margin-bottom: 1.2em;
+}
+
+.article-body .jp {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  color: var(--ink-light);
+}
+
+/* 台词引用块 */
+.dialogue {
+  margin: 1.8rem 0;
+  padding: 1.2rem 1.4rem;
+  background: rgba(90, 78, 58, 0.04);
+  border-left: 2px solid var(--ink-faint);
+}
+
+.dialogue-line {
+  margin-bottom: 0.6rem;
+}
+
+.dialogue-line:last-child { margin-bottom: 0; }
+
+.speaker {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-light);
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
+.line {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.9;
+  display: block;
+}
+
+/* 分隔线 */
+.sec-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 2.5rem 0 1.5rem;
+}
+
+.sec-label span {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--ink-light);
+  white-space: nowrap;
+}
+
+.sec-label::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--ink-faint);
+}
+
+/* 页脚 */
+footer {
+  padding: 2rem 0 3rem;
+  border-top: 0.5px solid var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-name {
+  font-family: 'Zen Old Mincho', serif;
+  font-size: 13px;
+  color: var(--ink-light);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+.footer-eof {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.15em;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.nav            { animation: fadeUp 0.5s ease both; }
+.article-header { animation: fadeUp 0.5s ease 0.1s both; }
+.article-body   { animation: fadeUp 0.5s ease 0.2s both; }
+footer          { animation: fadeUp 0.5s ease 0.3s both; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="nav">
+    <a href="index.html">Lynn の 独り言</a>
+  </nav>
+
+  <header class="article-header">
+    <div class="article-meta">
+      <span class="article-no"></span>
+      <span class="article-tag">観後感 · 手游活动</span>
+      <span class="article-date">2025.11</span>
+    </div>
+    <h1 class="article-title">6th-きみと、夜明けの先に</h1>
+    <p class="article-title-sub">与你在黎明尽头 &nbsp;·&nbsp; 六周年活动观后感</p>
+  </header>
+
+  <main class="article-body">
+
+    <p>新网站的试水，把去年写的六周年观后感搬上来看看嘻嘻</p>
+    <div class="sec-label"></div>
+
+    <p>六周年预告一出，一晚上过去了。阿萨已经从「马上要死（第二部）」变成「又死又活（六周年各种解读）」……</p>
+
+    <p>阿萨在中轴线上，shino大约也在中轴线上。这说明什么——这说明17岁组六周年也要一起蹲在楼梯上两眼泪汪汪认亲：你没妈我也没妈，我们都是野孩子，我们是亲人，你最懂我我最懂你（不是）</p>
+
+    <p>五周年太合家欢了，要不是我还记得电梯台阶没妈哭，我都差点忘了自己当时还是机翻硬啃完的。</p>
+
+    <p>卡面色差太大了，深灰怎么变成黑了……央人这个深黄配上纯黑像矿工。回味空间惊觉一百抽拿下白魔，以为欧得不行，回头一看45抽拿下六周年——zh还是倒闭吧。</p>
+
+    <p>魔法药规则怪谈，周年npc们中必然有人读过哈特博士的书。</p>
+
+    <div class="sec-label"></div>
+
+    <div class="dialogue">
+      <div class="dialogue-line">
+        <span class="speaker">ファウスト</span>
+        <span class="line">その方が健康でいい。<br>後ろ向きに悔やむよりは、前向きに呪っていけ。</span>
+      </div>
+    </div>
+
+    <p>起床，诅咒全世界！</p>
+
+    <p>浮士德感觉他这样不像是被烧出来的，更像央浮时期就是这种——可能比较轻一点，但表面光辉、央民暗地里呵呵诅咒你。被烧了之后不演了。</p>
+
+    <div class="sec-label"></div>
+
+    <div class="dialogue">
+      <div class="dialogue-line">
+        <span class="speaker">フィガロ</span>
+        <span class="line">もし見かけたら、双子先生か、<br>オズ……は役に立たないか。<br>ムル……。うーん……。</span>
+      </div>
+    </div>
+
+    <p>数了一遍：好椰奶、好弟弟、好仇人，瑞平——没一个能用的。</p>
+
+    <p>好搞笑啊。六周年浮和夏一起出场的频率太高了，终于发现了只有这两个老师是正常人.jpg</p>
+
+    <p>如果费只想着叫浮——那是想卖腐。如果费把夏和浮全叫上——说明费已经没招了。或者他想三批（不是）</p>
+    <div class="sec-label"></div>
+    <p>棒吵架，我以为是私下里，结果吵完了跑出来，夏和浮在旁边瑞平。你们不觉得这个画面很诡异吗。</p>
+
+    <div class="sec-label"></div>
+
+    <p>北双的阴间味好纯……</p>
+
+    <div class="dialogue">
+      <div class="dialogue-line">
+        <span class="speaker">フィガロ</span>
+        <span class="line">……どうしたの？</span>
+      </div>
+      <div class="dialogue-line">
+        <span class="speaker">ファウスト</span>
+        <span class="line">どうしたの、とは。<br>この者の容体についてでしょうか？</span>
+      </div>
+      <div class="dialogue-line">
+        <span class="speaker">フィガロ</span>
+        <span class="line">いや、きみが、なんか、こう……。<br>きらきらしてない？<br>いつもより……。<br>いや！いつも陰気だって、<br>言ってるわけじゃないけど……。</span>
+      </div>
+    </div>
+
+    <p>就是这段——浮变成央浮的状态，遇上费。费说：你怎么不像平时那么阴暗爬行了。</p>
+
+    <p>我其实想到的是：自己做自己的替身。费你看阴暗浮的时候，会想起没被烧的央浮吗？会代入吗？会把阴暗浮当央浮的替身吗？</p>
+
+    <p>「比起阴暗东浮，你会不会觉得还是听话的央浮更好呢。」</p>
+
+    <div class="dialogue">
+      <div class="dialogue-line">
+        <span class="speaker">フィガロ</span>
+        <span class="line">……そろそろ、助けてくれ。<br>どうにかなりそう……。</span>
+      </div>
+    </div>
+
+    <p>我很喜欢这里。四周年也好，六周年也好，最不想做人的人做了最做人的事。好像有点绕，但感觉可以说明白。</p>
+
+    <div class="sec-label"></div>
+
+    <p>阿萨。就这样一手奥兹一手浮士德地走下去吧。</p>
+
+    <p>其实这个看以前就有列表的人和我说，有我会看了很复杂的东西推荐我去看，想知道我是什么想法。但我重点其实不在那里，不是那句话——我比较在意这之后阿萨说的：</p>
+
+    <div class="dialogue">
+      <div class="dialogue-line">
+        
+        <span class="line">知らないことにしておいた方がいいか？</span>
+      </div>
+    </div>
+
+    <p>「我保持假装不知道的状态，这样会更好吗？」好暧昧，好暧昧。</p>
+
+    <p>因为我看的时候客观上说爽是爽的，但真的要说感觉很炸裂吗、很值得被讨论吗——又感觉好像没有。我觉得这样很正常啊，完全是合理的反应。不如说我一直期待这种事情。</p>
+
+    <p>所以浮喊出来没啥好奇怪的，让我比较🔥的是阿萨的反应——<strong>他一人称都改了！！！</strong></p>
+
+    <p>这但凡有百分之一阿萨不是蓄谋已久的可能，他都不会直接自称吧？！按照这个人的通透和情商，完全可以避开名字直接模糊过去啊……先不说失忆的人后面恢复会不会还有失忆期间的记忆，这完全是当着南长的面直接摊牌了啊！！</p>
+
+    <p>你到底是往哪装，和谁装，有装的必要的那几个人不都看见了吗！！！</p>
+
+    <p>对不起又开始想📖🪞的事情了……</p>
+
+    <div class="sec-label"></div>
+
+    <div class="dialogue">
+      <div class="dialogue-line">
+        <span class="speaker">フィガロ</span>
+        <span class="line">この世界にある、<br>素敵で、素晴らしい、いいものは、<br>全部あげよう。<br>そういう気持ちになるんだよね。</span>
+      </div>
+      <div class="dialogue-line">
+        <span class="speaker">スノウ</span>
+        <span class="line">フィガロちゃん、しみじみしてる……。</span>
+      </div>
+      <div class="dialogue-line">
+        <span class="speaker">ホワイト</span>
+        <span class="line">あの船もそんな気持ちで、建てられたものなのかもしれんのう。</span>
+      </div>
+      <div class="dialogue-line">
+        <span class="speaker">スノウ</span>
+        <span class="line">でも、一回目は、沈んじゃったんでしょ……。</span>
+      </div>
+      <div class="dialogue-line">
+        <span class="speaker">フィガロ</span>
+        <span class="line">胸が痛い……。</span>
+      </div>
+    </div>
+
+    <p>前面是强绊里一些很萌的互动，大致是费说「这世界上好的东西都想给你」这样。然后我突然有个（）的想法——</p>
+
+    <p>费说强绊像船 → （这是第二艘）雪说第一艘沉了 → 费心痛。我其实感觉这里多少有点在影射第一艘是肺腑……</p>
+
+    <div class="sec-label"></div>
+
+    <div class="dialogue">
+      <div class="dialogue-line">
+        <span class="speaker">ミスラ</span>
+        <span class="line">チレッタが死んだ時、<br>チレッタと一緒にいる俺も、<br>死んだような気がしたんですよね。</span>
+      </div>
+    </div>
+
+    <p>这和我爱你有什么区别……</p>
+
+    <div class="sec-label"></div>
+
+    <p>一想到六周年的主题是魔法舍大战奇异蘑菇就觉得好搞笑。</p>
+
+    <p>失忆喊阿雷克根本不够啊，他意识里根本没阿萨这个人，看见哪个格兰维尔、这个浮士德，第一反应都是「这人真像阿雷克」（他现在也这样）。倒是来个不失忆、意识清醒、记忆健全地把阿萨叫成阿雷克，我才能多点反应吧！</p>
+
+    <p>后来好不容易卖强绊让我走出来，分析说他们其实不是失忆，是记忆被遮盖了。阿萨说：「比如如果oz真失忆的话，不会那么快相信我。」</p>
+
+    <p>……</p>
+
+  </main>
+
+  <footer>
+    <a class="footer-name" href="index.html">Lynn の 独り言</a>
+    <span class="footer-eof">おわり</span>
+  </footer>
+
+</div>
+</body>
+</html>
