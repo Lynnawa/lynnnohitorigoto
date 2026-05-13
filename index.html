@@ -227,6 +227,14 @@ header {
   line-height: 1.7;
 }
 
+.empty-note {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+  padding: 0.8rem 0 2.5rem;
+}
+
 /* ── フッター ── */
 footer {
   padding: 2rem 0 3rem;
@@ -271,7 +279,7 @@ footer        { animation: fadeUp 0.6s ease 0.4s both; }
   <header>
     <p class="header-label">personal journal</p>
     <h1 class="site-title">Lynn <span class="no">の</span> 独り言</h1>
-    <p class="site-subtitle">lynnohitorigoto &nbsp;·&nbsp; 游戏 · 观后感 · 杂· 壁打ち</p>
+    <p class="site-subtitle">lynnohitorigoto &nbsp;·&nbsp; 游戏 · 观后感 · 杂</p>
     <span class="header-deco">言</span>
   </header>
 
@@ -284,11 +292,45 @@ footer        { animation: fadeUp 0.6s ease 0.4s both; }
     </p>
   </section>
 
+  <!-- ゲーム -->
   <section>
-    <div class="section-label"><span>きろく &nbsp;/ 文章列表</span></div>
+    <div class="section-label"><span>ゲーム &nbsp;/ 游戏</span></div>
     <ul class="articles">
+      <!-- 游戏文章加在这里 -->
+      <!--
+      <li>
+        <a class="article-item" href="no01.html">
+          <div class="article-date">
+            <span class="year">20XX</span>
+            XX.XX
+          </div>
+          <div class="article-content">
+            <p class="article-title">文章标题</p>
+            <p class="article-desc">一句简介</p>
+          </div>
+        </a>
+      </li>
+      -->
     </ul>
-    <p style="font-family:'Noto Sans SC',sans-serif;font-size:12px;color:var(--ink-faint);letter-spacing:0.1em;padding:1.5rem 0;">まだ何もない。&nbsp;·&nbsp; 还没有文章。</p>
+    <p class="empty-note">まだ何もない。</p>
+  </section>
+
+  <!-- 観後感 -->
+  <section>
+    <div class="section-label"><span>観後感 &nbsp;/ 观后感</span></div>
+    <ul class="articles">
+      <!-- 观后感文章加在这里 -->
+    </ul>
+    <p class="empty-note">まだ何もない。</p>
+  </section>
+
+  <!-- よろず -->
+  <section>
+    <div class="section-label"><span>よろず &nbsp;/ 杂</span></div>
+    <ul class="articles">
+      <!-- 杂记文章加在这里 -->
+    </ul>
+    <p class="empty-note">まだ何もない。</p>
   </section>
 
   <footer>
