@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>燭光舞う追憶のオブリガート — Lynn の 独り言</title>
+<style>
+  a {
+  color: inherit;
+  text-decoration: none;
+}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+SC:wght@300;400&family=Zen+Old+Mincho:wght@400;700&display=swap');
+
+:root {
+  --paper: #f5f0e8;
+  --ink: #2c2416;
+  --ink-soft: #5a4e3a;
+  --ink-light: #9a8c78;
+  --ink-faint: #c8bfae;
+  --accent-soft: #c47a3a;
+  --rule: rgba(90, 78, 58, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--paper);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 27px,
+      var(--rule) 27px,
+      var(--rule) 28px
+    );
+  color: var(--ink);
+  font-family: 'Noto Serif SC', 'Noto Serif JP', serif;
+  font-weight: 300;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.nav {
+  padding: 1.5rem 0;
+  border-bottom: 0.5px solid var(--ink-faint);
+  margin-bottom: 3rem;
+}
+
+.nav a {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--ink-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav a:hover { color: var(--ink); }
+.nav a::before { content: '← '; font-size: 10px; }
+
+.article-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.5px solid var(--ink-faint);
+}
+/* 分隔线 */
+.sec-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 2.5rem 0 1.5rem;
+}
+
+.sec-label span {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--ink-light);
+  white-space: nowrap;
+}
+
+.sec-label::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--ink-faint);
+}
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.article-no {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+}
+
+.article-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--accent-soft);
+}
+
+.article-date {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: var(--ink-faint);
+  margin-left: auto;
+}
+
+.article-title {
+  font-family: 'Zen Old Mincho', 'Noto Serif JP', serif;
+  font-size: clamp(18px, 3.5vw, 26px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.article-title-sub {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-light);
+  letter-spacing: 0.05em;
+}
+
+.article-body {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--ink-soft);
+  margin-bottom: 3rem;
+}
+
+.article-body p {
+  margin-bottom: 1.2em;
+}
+
+.article-body .jp {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  color: var(--ink-light);
+}
+/* 台词引用块 */
+.dialogue {
+  margin: 1.8rem 0;
+  padding: 1.2rem 1.4rem;
+  background: rgba(90, 78, 58, 0.04);
+  border-left: 2px solid var(--ink-faint);
+}
+
+.dialogue-line {
+  margin-bottom: 0.6rem;
+}
+
+.dialogue-line:last-child { margin-bottom: 0; }
+
+.speaker {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-light);
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
+.line {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.9;
+  display: block;
+}
+.aside {
+  border-left: 2px solid var(--ink-faint);
+  padding-left: 1.2rem;
+  margin: 1.5rem 0;
+  font-size: 14px;
+  color: var(--ink-light);
+  line-height: 1.9;
+}
+
+footer {
+  padding: 2rem 0 3rem;
+  border-top: 0.5px solid var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-name {
+  font-family: 'Zen Old Mincho', serif;
+  font-size: 13px;
+  color: var(--ink-light);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+.footer-eof {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.15em;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.nav            { animation: fadeUp 0.5s ease both; }
+.article-header { animation: fadeUp 0.5s ease 0.1s both; }
+.article-body   { animation: fadeUp 0.5s ease 0.2s both; }
+footer          { animation: fadeUp 0.5s ease 0.3s both; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="nav">
+    <a href="../index.html">Lynn の 独り言</a>
+  </nav>
+
+  <header class="article-header">
+    <div class="article-meta">
+    
+      <span class="article-tag">観後感 · 手游活动</span>
+      <span class="article-date">2025.09</span>
+    </div>
+    <h1 class="article-title">角灯導く救いのオブリガート</h1>
+    <p class="article-title-sub">提灯引导救赎的助奏曲 &nbsp;·&nbsp; 魔法使之家观后感</p>
+  </header>
+
+  <main class="article-body">
+
+    <p>其实我完全没想到这期活动会是这种剧情，cp脑真的纯为了家产去的……
+
+    <p>甚至看完之后对着亲友给我推荐这篇内容的聊天记录自我怀疑我们看的是一个剧情吗</p>
+    <p>比起前一篇助奏曲过家家风味这一篇味还算正</p>
+    <p>剧情上弥补了まほやく世界观没有杨永信的缺憾（……什么鬼）那个什么放下不可原谅的感情的教会和治疗方法既视感太强了前期完全是那种奇怪的表情看完的……</p>
+    <div class="sec-label"></div>
+    <p>但是浮cg以及cg前那段剧情差点把我再送走一次</p>
+    <p>一天到晚吐槽自己是不是阈值太高了浮士德叫一句フィガロ様原地起跳肺腑。。我的心杀十年鱼那样冷了什么肺腑哪里有肺腑</p>
+    <div class="dialogue">
+      <div class="dialogue-line">
+        <span class="speaker">ファウスト</span>
+        <span class="line">丁重にご指導いただき、<br>ありがとうございました。<br>……わかりました。<br>あなたの意思を尊重します。</span>
+      </div>
+    </div>
+   <p>我好喜欢看东浮对费用敬语、、</p>
+   <p>不过这期东师徒卖得很好吃……我观东师徒如同没有替身梗的アサファウ、、</p>
+   <div class="sec-label"></div>
+   <p>另外我完全没有想到的是这一期活动居然会卖央幼……</p> 
+   <p>其实看着挺诡异的，有种rq占了浮/阿萨占了费生态位的感觉</p>
+   <p>非正片主线剧情里塑造的最好的角色之一是rq</p>
+   <p>这真的完全是一个我第一眼甚至后面很多眼都烦得要死的角色</p>
+   <p>成功靠各种活动剧情让我彻底改观</p>
+   <div class="sec-label"></div>
+   <p>看完之后我又在思考那个从24年万圣就在思考的问题，阿萨这个ssr到底是来干嘛的……</p>
+   <p>都ssr了存在感能不能稍微高一点。这剧情到底怎么安排的</p>
+   <p>原本以为落魄之血是基础谁想得到落魄之血是巅峰……</p>
+  </main>
+
+  <footer>
+    <a class="footer-name" href="../index.html">Lynn の 独り言</a>
+    <span class="footer-eof">おわり</span>
+  </footer>
+
+</div>
+</body>
+</html>
